@@ -1,0 +1,3 @@
+---
+# All options, except special_time, of the cron module are available and defaults are the same.
+# http://docs.ansible.com/cron_module.html

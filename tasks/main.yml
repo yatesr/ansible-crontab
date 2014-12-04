@@ -1,0 +1,18 @@
+---
+# Install crontab if needed
+- include: install.yml
+
+- name: Install crontab entries for each user(s)
+  cron: backup={{item.value.backup | default('no')}}
+        day={{item.value.day | default('*')}}
+        hour={{item.value.hour | default('*')}}
+        job="{{item.value.job | default()}}"
+        minute={{item.value.minute | default('*')}}
+        month={{item.value.month | default('*')}}
+        name="{{item.value.name}}"
+        state={{item.value.state | default('present')}}
+        user={{item.key | default('root')}}
+        weekday={{item.value.weekday | default('*')}}
+  with_dict: crontab | default({})
+  tags: ['cron']
+
