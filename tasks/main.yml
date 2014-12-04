@@ -9,9 +9,9 @@
         job="{{item.value.job | default()}}"
         minute={{item.value.minute | default('*')}}
         month={{item.value.month | default('*')}}
-        name="{{item.value.name}}"
+        name="{{item.key}}"
         state={{item.value.state | default('present')}}
-        user={{item.key | default('root')}}
+        user={{item.value.user | default('root')}}
         weekday={{item.value.weekday | default('*')}}
   with_dict: crontab | default({})
   tags: ['cron']
